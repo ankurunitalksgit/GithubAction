@@ -7,7 +7,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
           - name: Checkout
-            users: master
+            uses: master
 
           - name: Assemble Debug
             run: ./gradlew assembleDebug
