@@ -26,7 +26,7 @@ jobs:
           - uses: 8398a7/action-slack@v3
             with:
               status: ${{ env.WORKFLOW_CONCLUSION }}
-              fields: commit, ref, workflow, eventName
+              fields: commit-id, ref, workflow, eventName
               author_name: ${{ github.actor }}
               icon_emoji: ':robot_face:'
               username: "Pull request Build Status"
