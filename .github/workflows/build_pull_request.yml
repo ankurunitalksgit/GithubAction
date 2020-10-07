@@ -6,8 +6,8 @@ jobs:
         name: Assemble
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout
+          - name: Checkout
             users: actions/checkout@v2
-
-            - name: Assemble Debug
+            
+          - name: Assemble Debug
               run: ./gradlew assembleDebug
