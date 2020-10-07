@@ -12,11 +12,11 @@ jobs:
           - name: Restore Cache
             uses: actions/cache@v2
             with:
-              path:|
+              path: |
                 ~/.gradle/caches
                 ~/.gradle/wrapper
               key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
-              restore-keys:|
+              restore-keys: |
                 ${{ runner.os }}-gradle-
 
           - name: Assemble Debug
