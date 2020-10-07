@@ -8,6 +8,6 @@ jobs:
         steps:
           - name: Checkout
             users: actions/checkout@v2
-            
+
           - name: Assemble Debug
-              run: ./gradlew assembleDebug
+            run: ./gradlew assembleDebug
