@@ -9,5 +9,15 @@ jobs:
           - name: Checkout
             uses: actions/checkout@v2 #The uses keyword tells the job to retrieve v2 of the community action named actions/checkout@v2. This is an action that checks out your repository and downloads it to the runner, allowing you to run actions against your code (such as testing tools). You must use the checkout action any time your workflow will run against the repository's code or you are using an action defined in the repository.
 
+          - name: Restore Cache
+            uses: actions/cache@v2
+            with:
+              path:|
+                ~/.gradle/caches
+                ~/.gradle/wrapper
+              key: ${{ runner.os }}-gradle-${{hashFiles('**/*.gradle"') }}
+              restore-keys:|
+                ${{ runner.os }}-gradle-
+
           - name: Assemble Debug
             run: ./gradlew assembleDebug
