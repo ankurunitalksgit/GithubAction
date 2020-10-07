@@ -36,4 +36,4 @@ jobs:
                 https://github.com/ankurunitalksgit/GithubAction/actions/runs/${{ github.run_id }}
             env:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # requireddf
+              SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
