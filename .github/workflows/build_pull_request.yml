@@ -35,6 +35,25 @@ jobs:
       continue-on-error: true
       steps:
 
+        - name: Checkout
+          uses: actions/checkout@v2
+
+        - name: Restore Cache
+          uses: actions/cache@v2
+          with:
+            path: |
+              ~/.gradle/caches
+              ~/.gradle/wrapper
+            key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+            restore-keys: |
+                ${{ runner.os }}-gradle-
+
+        - name: Assemble
+          env:
+            VERSION_CODE: ${{ github.run_id }}
+            VERSION_SUFFIX: ${{ github.event.inputs.input1 }}
+          run: ./gradlew assembleDebug
+
         - name: Upload to Firebase App Distribution
           uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
           with:
