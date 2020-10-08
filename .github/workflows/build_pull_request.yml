@@ -22,10 +22,10 @@ jobs:
           - name: Assemble Debug
             run: ./gradlew assembleDebug
 
-          - name: Upload APK
+          - name: Upload APK  #store the apk in the local
             uses: actions/upload-artifact@v2
             with:
-                name: apk
+                name: debugAPK
                 path: app/build/outputs/apk/debug/**.apk
 
 
@@ -48,3 +48,17 @@ jobs:
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
+
+    distribute_job:
+          needs: [test_job,notification_job]
+          name: Share app with qa using the firebase app distribution
+          runs-on: ubuntu-latest
+          steps:
+
+            - name: Upload to Firebase App Distribution
+                uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
+                with:
+                  appId: ${{ secrets.FIREBASE_APP_ID }}
+                  token: ${{ secrets.FIREBASE_TOKEN }}
+                  groups: qa
+                  file: app/build/outputs/apk/debug/app-debug.apk

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "355818837043",
+    "firebase_url": "https://github-action-3e030.firebaseio.com",
+    "project_id": "github-action-3e030",
+    "storage_bucket": "github-action-3e030.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:355818837043:android:21155baca9213336f03f46",
+        "android_client_info": {
+          "package_name": "com.unitalks.githubaction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "355818837043-s7pfg5hi9djgt4deuamhdcpiredmi5pq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCajlDxExftkoEHpgE_Hd5rEgoiP1jXAFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "355818837043-s7pfg5hi9djgt4deuamhdcpiredmi5pq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
