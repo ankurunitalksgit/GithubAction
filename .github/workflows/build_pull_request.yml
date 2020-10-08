@@ -2,34 +2,7 @@ name: Build Pull Request
 on: push
 
 jobs:
-    test_job:
-        name: Assemble
-        runs-on: ubuntu-latest
-        steps:
-          - name: Checkout
-            uses: actions/checkout@v2 #The uses keyword tells the job to retrieve v2 of the community action named actions/checkout@v2. This is an action that checks out your repository and downloads it to the runner, allowing you to run actions against your code (such as testing tools). You must use the checkout action any time your workflow will run against the repository's code or you are using an action defined in the repository.
-
-          - name: Restore Cache
-            uses: actions/cache@v2  # Caching dependencies to speed up workflows , that is cache gradle files. more info on https://docs.github.com/en/free-pro-team@latest/actions/guides/caching-dependencies-to-speed-up-workflows
-            with:
-              path: |    # The file path on the runner to cache or restore.
-                ~/.gradle/caches
-                ~/.gradle/wrapper
-              key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}   # The key created when saving a cache and the key used to search for a cache.
-              restore-keys: |   #An ordered list of alternative keys to use for finding the cache if no cache hit occurred for key.
-                ${{ runner.os }}-gradle-
-
-          - name: Assemble Debug
-            run: ./gradlew assembleDebug
-
-          - name: Upload APK  #store the apk in the local
-            uses: actions/upload-artifact@v2
-            with:
-                name: debugAPK
-                path: app/build/outputs/apk/debug/**.apk
-
     distribute_job:
-      needs: [test_job]
       name: Share app with qa using the firebase app distribution
       runs-on: ubuntu-latest
       continue-on-error: true
